@@ -3,6 +3,10 @@ import pygame
 from enum import Enum
 from models.pawn import Pawn
 from models.rook import Rook
+from models.king import King
+from models.queen import Queen
+from models.bishop import Bishop
+from models.knight import Knight
 
 WIDTH = 800
 HEIGHT = 800
@@ -56,6 +60,178 @@ class Chess:
       source=rook.get_piece(),
       dest=(rook.get_location()[0] * 100 + 10, rook.get_location()[1] * 100 + 30)
     )
+    
+    bishop = Bishop(
+      color=Color.WHITE.value,
+      name='bishop',
+      location=(6,0)
+    )
+    self.screen.blit(
+      source=bishop.get_piece(),
+      dest=(bishop.get_location()[0] * 100 + 10, bishop.get_location()[1] * 100 + 30)
+    )
+    
+    bishop = Bishop(
+      color=Color.WHITE.value,
+      name='bishop',
+      location=(2,0)
+    )
+    self.screen.blit(
+      source=bishop.get_piece(),
+      dest=(bishop.get_location()[0] * 100 + 10, bishop.get_location()[1] * 100 + 30)
+    )
+
+    knight = Knight(
+      color=Color.WHITE.value,
+      name='knight',
+      location=(5,0)
+    )
+    self.screen.blit(
+      source=knight.get_piece(),
+      dest=(knight.get_location()[0] * 100 + 10, knight.get_location()[1] * 100 + 30)
+    )
+    
+    knight = Knight(
+      color=Color.WHITE.value,
+      name='knight',
+      location=(1,0)
+    )
+    self.screen.blit(
+      source=knight.get_piece(),
+      dest=(knight.get_location()[0] * 100 + 10, knight.get_location()[1] * 100 + 30)
+    )
+
+    bishop = Bishop(
+      color=Color.WHITE.value,
+      name='bishop',
+      location=(2,0)
+    )
+    self.screen.blit(
+      source=bishop.get_piece(),
+      dest=(bishop.get_location()[0] * 100 + 10, bishop.get_location()[1] * 100 + 30)
+    )
+    
+    king = King(
+      color=Color.WHITE.value,
+      name='king',
+      location=(3,0)
+    )
+    self.screen.blit(
+      source=king.get_piece(),
+      dest=(king.get_location()[0] * 100 + 10, king.get_location()[1] * 100 + 30)
+    )
+    
+    queen = Queen(
+      color=Color.WHITE.value,
+      name='queen',
+      location=(4,0)
+    )
+    self.screen.blit(
+      source=queen.get_piece(),
+      dest=(queen.get_location()[0] * 100 + 10, queen.get_location()[1] * 100 + 30)
+    )
+
+  def create_black_pieces(self):
+    for i in range(8):
+      pawn = Pawn(
+        color=Color.BLACK.value,
+        name='pawn',
+        location=(i,6)
+      )
+      self.screen.blit(
+        source=pawn.get_piece(),
+        dest=(pawn.get_location()[0] * 100 + 10, pawn.get_location()[1] * 100 + 30)
+      )
+    
+    rook = Rook(
+      color=Color.BLACK.value,
+      name='rook',
+      location=(0,7)
+    )
+    self.screen.blit(
+      source=rook.get_piece(),
+      dest=(rook.get_location()[0] * 100 + 10, rook.get_location()[1] * 100 + 30)
+    )
+    
+    rook = Rook(
+      color=Color.BLACK.value,
+      name='rook',
+      location=(7,7)
+    )
+    self.screen.blit(
+      source=rook.get_piece(),
+      dest=(rook.get_location()[0] * 100 + 10, rook.get_location()[1] * 100 + 30)
+    )
+    
+    bishop = Bishop(
+      color=Color.BLACK.value,
+      name='bishop',
+      location=(6,7)
+    )
+    self.screen.blit(
+      source=bishop.get_piece(),
+      dest=(bishop.get_location()[0] * 100 + 10, bishop.get_location()[1] * 100 + 30)
+    )
+    
+    bishop = Bishop(
+      color=Color.BLACK.value,
+      name='bishop',
+      location=(2,7)
+    )
+    self.screen.blit(
+      source=bishop.get_piece(),
+      dest=(bishop.get_location()[0] * 100 + 10, bishop.get_location()[1] * 100 + 30)
+    )
+
+    knight = Knight(
+      color=Color.BLACK.value,
+      name='knight',
+      location=(5,7)
+    )
+    self.screen.blit(
+      source=knight.get_piece(),
+      dest=(knight.get_location()[0] * 100 + 10, knight.get_location()[1] * 100 + 30)
+    )
+    
+    knight = Knight(
+      color=Color.BLACK.value,
+      name='knight',
+      location=(1,7)
+    )
+    self.screen.blit(
+      source=knight.get_piece(),
+      dest=(knight.get_location()[0] * 100 + 10, knight.get_location()[1] * 100 + 30)
+    )
+
+    bishop = Bishop(
+      color=Color.BLACK.value,
+      name='bishop',
+      location=(2,7)
+    )
+    self.screen.blit(
+      source=bishop.get_piece(),
+      dest=(bishop.get_location()[0] * 100 + 10, bishop.get_location()[1] * 100 + 30)
+    )
+    
+    king = King(
+      color=Color.BLACK.value,
+      name='king',
+      location=(3,7)
+    )
+    self.screen.blit(
+      source=king.get_piece(),
+      dest=(king.get_location()[0] * 100 + 10, king.get_location()[1] * 100 + 30)
+    )
+    
+    queen = Queen(
+      color=Color.BLACK.value,
+      name='queen',
+      location=(4,7)
+    )
+    self.screen.blit(
+      source=queen.get_piece(),
+      dest=(queen.get_location()[0] * 100 + 10, queen.get_location()[1] * 100 + 30)
+    )
 
   def main_loop(self) -> None:
     fps = 60
@@ -64,6 +240,7 @@ class Chess:
       self.timer.tick(fps)
       self.draw_board()
       self.create_white_pieces()
+      self.create_black_pieces()
 
       for event in pygame.event.get():
           if event.type == pygame.QUIT:
