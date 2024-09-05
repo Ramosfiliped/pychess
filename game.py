@@ -294,6 +294,8 @@ class Chess:
     run = True
     while run:
       self.timer.tick(fps)
+      self.screen.fill('dark gray')
+
       self.draw_board()
       self.create_white_pieces()
       self.create_black_pieces()
